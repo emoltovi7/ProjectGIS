@@ -1,8 +1,10 @@
 <html>
     <head>
-        <title>
-          Title
-        </title>
+        <meta charset='utf-8' />
+        <title> XAL </title>
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
 
         <style>
           header {
@@ -15,16 +17,36 @@
             width: 100%;
             height: 92%;
           }
+
+          #map {
+            width: 100%;
+            height: 100%
+          }
         </style>
+        <script>
+
+          function init() {
+              mapboxgl.accessToken =
+                  'pk.eyJ1IjoiZW1vbHRvdmk3IiwiYSI6ImNrNWNwMTB4NTA5djYzbnFmczVtZWN5bGQifQ.4TZHCIF2dT6LtuzwqD-KrA';
+              var map = new mapboxgl.Map({
+                  container: 'map',
+                  style: 'mapbox://styles/emoltovi7/ckkvftb5w42c817nzf9w21pqa',
+                  center: [2.058356166296968, 41.39816698110466],
+                  zoom: 10.5,
+                  attributionControl: false
+              });
+              map.addControl(new mapboxgl.NavigationControl({showCompass:false}));
+          }
+        </script>
 
     </head>
-    <body>
+    <body onload="init()">
         <header>
 
         </header>
 
         <main>
-          <div id="map-canvas" class="map"></div>
+          <div id="map"></div>
         </main>
     </body>
 </html>
