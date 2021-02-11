@@ -1,0 +1,238 @@
+body
+{	
+	/*position: fixed;*/
+	/*top: 15%;*/
+	font-size: 14px;
+	/*background-color: #FFFFF0;*/
+	font-family: verdana;
+	font-weight: bold;
+}
+/*----------------------------------------------CAPÇALERA--------------------------------------------*/
+header
+{
+    clear: both;
+    position: fixed;
+    display: flex;
+  	align-items: center;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+	background-color: white;
+}
+
+/*LOGO ESQUERRA*/
+div#header_left {
+	min-width: 160px;
+	width: 20%;
+	float: left;
+	border-right: 3px solid #F9F8D6;
+}
+
+img#logo_XAL {
+	vertical-align: center;
+	align-self: center;
+ 	padding: 5px;
+ 	margin-left: 10%;
+}
+
+/*LOGO DRETA*/
+div#header_right {
+	width: 80%;
+	float: right;
+}
+
+img#logo_AMB {
+	max-height: 30px;  
+ 	float: right;
+ 	padding: 5px;
+ 	margin: 10px;
+ 	margin-right: 10%;
+}
+
+/*MENU*/
+div#header_menu {
+	width: 80%;
+	float: right;
+}
+nav
+{
+	min-width: 500px;
+	width: 100%;
+	height: 100%;
+	float: left;
+
+}
+
+ul#menu_nav
+{
+	position: relative;
+	top: 30%;
+	left: 5%;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0; 
+
+	list-style-type: none;
+
+}
+
+#menu_nav li
+{
+	float: left;
+	text-align: center;
+	margin-right: 10px;
+	margin-left: 10px;
+	list-style-type: none;
+	padding: 6px;
+}
+
+
+
+
+/*---------------------------------------------------MAPA------------------------------------------------*/
+main {
+	position: fixed;
+	top: 10%;
+	width: 100%;
+	height: 85%;
+}
+
+#map_canvas {
+	width: 100%;
+	height: 100%;
+	}
+
+/*--------------------------------------------------PEU---------------------------------------------------*/
+/*PIE DE PAGINA*/
+
+footer
+{
+	min-width: 885px;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+	background-color: white;
+	height: 5%;
+}
+
+/*IDIOMAS*/
+div#idiomas
+{
+	min-width: 250px;
+	float: left;
+	margin-bottom: 10px;
+}
+
+ul#lista_idiomas  
+{
+	margin: 10px;
+	padding: 0;
+}
+
+ul#lista_idiomas  li
+{
+	float: left;
+	list-style-type: none;
+	padding-right: 10px;
+}
+
+#lista_idiomas li
+{
+	border-right: 1px solid darkgrey;
+	margin-right: 13px;
+}
+
+#lista_idiomas li:last-child
+{
+	border-right: none;
+}
+
+/*LINK EXTERNOS*/
+
+/*IDIOMAS*/
+div#links_externos
+{
+	min-width: 450px;
+	float: right;
+	margin-bottom: 10px;
+}
+
+ul#links_externos  
+{
+	margin: 10px;
+	padding: 0;
+}
+
+ul#links_externos  li
+{
+	float: left;
+	list-style-type: none;
+	padding-right: 10px;
+}
+
+#links_externos li
+{
+	border-right: 1px solid darkgrey;
+	margin-right: 13px;
+
+}
+
+#links_externos li:last-child
+{
+	border-right: none;
+}
+
+/*LINKS idiomas & menu*/
+
+body a:link 
+{
+	
+    color: darkgrey;
+   	text-decoration: none;
+}
+
+body a:visited 
+{
+	text-decoration: none;
+    color: darkgrey;
+}
+
+body a:hover 
+{
+	text-decoration: none;
+    color: red;
+}
+
+body a:active 
+{
+	text-decoration: none;
+    color: black;
+}
+
+
+/*LINKS PIE PAGINA*/
+
+footer a:link 
+{
+    color: darkgrey;
+   	text-decoration: none;
+}
+
+footer a:visited 
+{
+	text-decoration: none;
+    color: darkgrey;
+}
+
+footer a:hover 
+{
+	text-decoration: none;
+    color: red;
+}
+
+footer a:active 
+{
+	text-decoration: none;
+    color: black;
+}
