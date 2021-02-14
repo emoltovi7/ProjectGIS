@@ -1,0 +1,277 @@
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title> XAL </title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <meta name="description" content="Xarxa Agroalimentaria Local (XAL)">
+        <meta name="keywords" content="Xarxa, Agroalimentaria, Local, XAL">
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
+        <!--geocoder-->
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+        <!--geocoder-->
+
+        <script>
+
+          function init() {
+              mapboxgl.accessToken =
+                  'pk.eyJ1IjoiZW1vbHRvdmk3IiwiYSI6ImNrNWNwMTB4NTA5djYzbnFmczVtZWN5bGQifQ.4TZHCIF2dT6LtuzwqD-KrA';
+              var map = new mapboxgl.Map({
+                  container: 'map_canvas',
+                  style: 'mapbox://styles/emoltovi7/ckkvftb5w42c817nzf9w21pqa',
+                  center: [2.058356166296968, 41.39816698110466],
+                  zoom: 10.5,
+                  attributionControl: false
+              });
+              /*geocoder*/
+              map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken, mapboxgl:mapboxgl}));
+              map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'bottom-right');
+
+                map.on('load', function () {
+
+                                  //afegir capa productes ecos
+                                  map.addSource('ecos_source', {
+                                      type: 'vector',
+                                      url: 'mapbox://emoltovi7.ckl5jbfq30la720rr5yve0wcm-4b9in'
+                                  });
+
+                                  map.addLayer({
+                                      'id': 'Productes ecològics',
+                                      'type': 'circle',
+                                      'source': 'ecos_source',
+                                      'layout': {'visibility': 'visible'},
+                                      'paint':{
+                                          'circle-radius': 4,
+                                          'circle-color':'#FF9200'
+                                      },
+                                      'source-layer': 'ecos'
+                                  });
+
+                                  //afegir capa productes locals
+                                  map.addSource('xal_locals_source', {
+                                      type: 'vector',
+                                      url: 'mapbox://emoltovi7.ckl5jpn8q1f5o29nh3mipv4kw-5ftfl'
+                                  });
+
+                                  map.addLayer({
+                                      'id': 'Productes locals',
+                                      'type': 'circle',
+                                      'source': 'xal_locals_source',
+                                      'layout': {'visibility': 'visible'},
+                                      'paint':{
+                                          'circle-radius': 4,
+                                          'circle-color':'#00E29E'
+                                      },
+                                      'source-layer': 'xal_locals'
+                                  });
+
+                                  //afegir capa tots productes
+                                  map.addSource('xal_tots_source', {
+                                      type: 'vector',
+                                      url: 'mapbox://emoltovi7.ckl5hbvxs1elp22nht9ccx28k-7glqa'
+                                  });
+
+                                  map.addLayer({
+                                      'id': 'Tots els productes',
+                                      'type': 'circle',
+                                      'source': 'xal_tots_source',
+                                      'layout': {'visibility': 'none'},
+                                      'paint':{
+                                          'circle-radius': 4,
+                                          'circle-color':'#7735CE'
+                                      },
+                                      'source-layer': 'xal_tots'
+                                  });
+
+
+                });
+
+                          map.on('click', function(e) {
+                                  var features = map.queryRenderedFeatures(e.point, {
+                                      layers: ['Productes locals'] // replace this with the name of the layer
+                                  });
+
+                                  if (!features.length) {
+                                      return;
+                                  }
+
+                                  var feature = features[0];
+
+                                  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+                                      .setLngLat(feature.geometry.coordinates)
+                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ' ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.field_9 + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
+                                      .setLngLat(feature.geometry.coordinates)
+                                      .addTo(map);
+                            });
+
+                          map.on('mouseenter', 'Productes locals', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Productes locals', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                // enumerate ids of the layers
+                var toggleableLayerIds = ['Productes locals', 'Productes ecològics', 'Tots els productes'];
+                
+                // set up the corresponding toggle button for each layer
+                for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+                  
+                var link = document.createElement('a');
+                link.href = '#';
+                link.className = 'active';
+                link.textContent = id;
+                  
+                link.onclick = function (e) {
+                var clickedLayer = this.textContent;
+                e.preventDefault();
+                e.stopPropagation();
+                  
+                var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                  
+                // toggle layer visibility by changing the layout object's visibility property
+                if (visibility === 'visible') {
+                map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                this.className = '';
+                } else {
+                this.className = 'active';
+                map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                }
+                };
+                  
+                var layers = document.getElementById('menu');
+                layers.appendChild(link);
+                }
+
+
+
+          }
+        </script>
+
+    </head>
+    <body onload="init()">
+      <!--CAPÇALERA-->
+        <header>
+
+          <!--logo xal esquerra-->
+          <div id=header_left>
+            <a href="index.html"><img id="logo_XAL" src="images/logo_XAL.png"></a>
+          </div>
+
+          <!--menu superior-->
+          <div id=header_menu>
+            <nav>
+							<ul id="menu_nav">
+                <li>
+									<a href="locals.html">Productes locals</a>
+								</li>
+								<li>
+									<a href="ecos.html">Productes ecològics</a>
+								</li>
+								<li>
+									<a href="tots.html">Tots els productes</a>
+								</li>
+							</ul>
+					</nav>
+          </div>
+
+          <!--logo amb dreta--> 
+          <div id=header_right>
+            <img id="logo_AMB" src="images/logo_AMB.png" >
+          </div>
+          
+        </header>
+      
+        <!--MAPA-->
+        <main>
+
+          <style>
+            #menu {
+            position: absolute;
+            z-index: 1;
+            top: 10px;
+            left: 10px;
+            width: 200px;
+            height: 30px;
+            border: 0px;
+            font-family: 'Open Sans', sans-serif;
+            }
+             
+            #menu a {
+            opacity: 85%;
+            font-size: 13px;
+            color: #404040;
+            display: block;
+            width: 140px;
+            margin: 0;
+            padding: 0;
+            padding: 10px;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+            text-align: center;
+            }
+             
+            #menu a:last-child {
+            border: none;
+            }
+             
+            #menu a:hover {
+            background-color: #f8f8f8;
+            color: #404040;
+            }
+             
+            #menu a.active {
+            background-color: #42BC97;
+            color: #ffffff;
+            }
+             
+            #menu a.active:hover {
+            background: #25A780;
+            }
+          </style>
+
+          <nav id="menu"></nav>
+          <div id="map_canvas"></div>
+        </main>
+
+      <!--PEU-->
+        <footer>
+          <!--selector idioma-->
+          <div id="idiomas">  
+
+            <ul id="lista_idiomas">
+
+              <li><a href="#">Català</a></li>
+              <li><a href="#">Castellano</a></li>
+              <li><a href="#">English</a></li>
+
+            </ul>
+
+          </div>
+
+          <div id="links_externos">
+            <ul id="links_externos">
+
+              <li>
+                <a href="#">Política de privacitat</a>
+              </li>
+              <li>
+                <a href="#">Avís legal</a>
+              </li>
+              <li>
+                <a href="#">L'àrea metropolitana</a>
+
+              </li>
+
+            </ul>
+          </div>
+        </footer>
+
+    </body>
+</html>

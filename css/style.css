@@ -1,10 +1,8 @@
+/*-------------------------------------------GENERAL---------------------------------------*/
 body
 {	
-	/*position: fixed;*/
-	/*top: 15%;*/
-	font-size: 14px;
-	/*background-color: #FFFFF0;*/
-	font-family: verdana;
+	font-size: 22px;
+	font-family: Calibri;
 	font-weight: bold;
 }
 /*----------------------------------------------CAPÇALERA--------------------------------------------*/
@@ -42,7 +40,7 @@ div#header_right {
 }
 
 img#logo_AMB {
-	max-height: 30px;  
+	max-height: 90px;  
  	float: right;
  	padding: 5px;
  	margin: 10px;
@@ -94,6 +92,7 @@ ul#menu_nav
 main {
 	position: fixed;
 	top: 10%;
+	left: 0%;
 	width: 100%;
 	height: 85%;
 }
@@ -104,7 +103,7 @@ main {
 	}
 
 /*--------------------------------------------------PEU---------------------------------------------------*/
-/*PIE DE PAGINA*/
+/*PEU DE PAGINA*/
 
 footer
 {
@@ -114,9 +113,10 @@ footer
     bottom: 0px;
 	background-color: white;
 	height: 5%;
+	font-size: 18px;
 }
 
-/*IDIOMAS*/
+/*IDIOMES*/
 div#idiomas
 {
 	min-width: 250px;
@@ -148,9 +148,9 @@ ul#lista_idiomas  li
 	border-right: none;
 }
 
-/*LINK EXTERNOS*/
+/*LINK EXTERNS*/
 
-/*IDIOMAS*/
+/*IDIOMES*/
 div#links_externos
 {
 	min-width: 450px;
@@ -183,19 +183,19 @@ ul#links_externos  li
 	border-right: none;
 }
 
-/*LINKS idiomas & menu*/
+/*LINKS idiomes & menu*/
 
 body a:link 
 {
 	
-    color: darkgrey;
+    color: #463C32;
    	text-decoration: none;
 }
 
 body a:visited 
 {
 	text-decoration: none;
-    color: darkgrey;
+    color: #463C32;
 }
 
 body a:hover 
@@ -211,7 +211,7 @@ body a:active
 }
 
 
-/*LINKS PIE PAGINA*/
+/*LINKS PEU PAGINA*/
 
 footer a:link 
 {
