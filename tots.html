@@ -29,14 +29,14 @@
               });
               /*geocoder*/
               map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken, mapboxgl:mapboxgl}));
-              map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'bottom-right');
-
+              map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'top-right');
+                //afegir capes
                 map.on('load', function () {
 
                                   //afegir capa productes ecos
                                   map.addSource('xal_ecos_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl6goyn80g8n28pgxngfxrxb-0pnr5'
+                                      url: 'mapbox://emoltovi7.ckl6sen3y08k321mdlqv2y9x2-54fdd'
                                   });
 
                                   map.addLayer({
@@ -54,7 +54,7 @@
                                   //afegir capa productes locals
                                   map.addSource('xal_locals_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl6gnx531tky29qs3otc2rjc-161a9'
+                                      url: 'mapbox://emoltovi7.ckl6sfo6306mv21tonq73j2fy-2lk2d'
                                   });
 
                                   map.addLayer({
@@ -69,10 +69,46 @@
                                       'source-layer': 'xal_locals'
                                   });
 
-                                  //afegir capa tots productes
-                                  map.addSource('xal_tots_source', {
+                                  //afegir capa explotacions agràries
+                                  map.addSource('exp_agr_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl6gmlhj187f27mxn3uodohe-5m8rx'
+                                      url: 'mapbox://emoltovi7.5mnkrjm4'
+                                  });
+
+                                  map.addLayer({
+                                      'id': 'Explotacions agràries',
+                                      'type': 'fill',
+                                      'source': 'exp_agr_source',
+                                      'layout': {'visibility': 'visible'},
+                                      'paint':{
+                                          'fill-opacity': 0.5,
+                                          'fill-color':'#36A1A1'
+                                      },
+                                      'source-layer': 'exp_agr-1dkq0e'
+                                  });
+                          
+                                  //afegir capa cultius
+                                  map.addSource('cultius_source', {
+                                      type: 'vector',
+                                      url: 'mapbox://emoltovi7.ckl6o1elc07ha29mbf3teedta-1u9lm'
+                                  });
+
+                                  map.addLayer({
+                                      'id': 'Cultius',
+                                      'type': 'fill',
+                                      'source': 'cultius_source',
+                                      'layout': {'visibility': 'visible'},
+                                      'paint':{
+                                          'fill-opacity': 0.5,
+                                          'fill-color':'#A3D94C'
+                                      },
+                                      'source-layer': 'cultius'
+                                  });
+
+                                  //afegir capa tots productes
+                                  /*map.addSource('xal_tots_source', {
+                                      type: 'vector',
+                                      url: 'mapbox://emoltovi7.ckl6sh8al1bam21mx54a8m6ox-9r8r8'
                                   });
 
                                   map.addLayer({
@@ -85,14 +121,16 @@
                                           'circle-color':'#7735CE'
                                       },
                                       'source-layer': 'xal_tots'
-                                  });
+                                  });*/
 
 
                 });
+                //final afegir capes
 
+                          //afegir popup
                           map.on('click', function(e) {
                                   var features = map.queryRenderedFeatures(e.point, {
-                                      layers: ['Productes locals', 'Productes ecològics', 'Tots els productes']
+                                      layers: ['Productes locals', 'Productes ecològics']
                                   });
 
                                   if (!features.length) {
@@ -124,18 +162,20 @@
                             map.getCanvas().style.cursor = '';                    
                           });
 
-                          map.on('mouseenter', 'Tots els productes', function() {
+                          /*map.on('mouseenter', 'Tots els productes', function() {
                           map.getCanvas().style.cursor = 'pointer';                    
                           });
 
                           map.on('mouseleave', 'Tots els productes', function() {
                             map.getCanvas().style.cursor = '';                    
-                          });
+                          });*/
+                          //final afegir popup
 
-                // enumerate ids of the layers
-                var toggleableLayerIds = ['Productes locals', 'Productes ecològics', 'Tots els productes'];
+
+                //afegir selector de capes
+                var toggleableLayerIds = ['Productes locals', 'Productes ecològics', 'Cultius', 'Explotacions agràries'];
                 
-                // set up the corresponding toggle button for each layer
+                // **set up the corresponding toggle button for each layer
                 for (var i = 0; i < toggleableLayerIds.length; i++) {
                 var id = toggleableLayerIds[i];
                   
@@ -151,7 +191,7 @@
                   
                 var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
                   
-                // toggle layer visibility by changing the layout object's visibility property
+                // **toggle layer visibility by changing the layout object's visibility property
                 if (visibility === 'visible') {
                 map.setLayoutProperty(clickedLayer, 'visibility', 'none');
                 this.className = '';
@@ -164,7 +204,7 @@
                 var layers = document.getElementById('menu');
                 layers.appendChild(link);
                 }
-
+                //final selector de capes
 
 
           }
@@ -208,6 +248,12 @@
         <main>
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
+          <div id="map_legend" class="legend">
+            <div><span style="background-color: #00E29E"></span>Productes locals</div>
+            <div><span style="background-color: #FF9200"></span>Productes ecològics</div>
+            <div><span style="background-color: #A3D94C"></span>Cultius</div>
+            <div><span style="background-color: #36A1A1"></span>Explotacions agràries</div>
+          </div>
         </main>
 
       <!--PEU-->

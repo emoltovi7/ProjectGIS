@@ -29,7 +29,577 @@
               });
               /*geocoder*/
               map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken, mapboxgl:mapboxgl}));
-              map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'bottom-right');
+              map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'top-right');
+
+
+              //afegir capes
+              map.on('load', function () {
+
+                        //afegir capa explotacions agràries
+                        map.addSource('exp_agr_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.5mnkrjm4'
+                        });
+
+                        map.addLayer({
+                            'id': 'Explotacions agràries',
+                            'type': 'fill',
+                            'source': 'exp_agr_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'fill-opacity': 0.5,
+                                'fill-color':'#36A1A1'
+                            },
+                            'source-layer': 'exp_agr-1dkq0e'
+                        });
+                
+                        //afegir capa cultius
+                        map.addSource('cultius_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6o1elc07ha29mbf3teedta-1u9lm'
+                        });
+
+                        map.addLayer({
+                            'id': 'Cultius',
+                            'type': 'fill',
+                            'source': 'cultius_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'fill-opacity': 0.5,
+                                'fill-color':'#A3D94C'
+                            },
+                            'source-layer': 'cultius'
+                        });
+                
+                        //afegir capa C17
+                        map.addSource('ec17_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6sp9co0tg728o43xiv7n6y-9l1at'
+                        });
+
+                        map.addLayer({
+                            'id': 'Vinya',
+                            'type': 'circle',
+                            'source': 'ec17_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#94346E'
+                            },
+                            'source-layer': 'ec17'
+                        });
+
+                        //afegir capa C16
+                        map.addSource('ec16_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kidss0i6e25jcjm1oqf6e-900sk'
+                        });
+
+                        map.addLayer({
+                            'id': 'Hortalisses',
+                            'type': 'circle',
+                            'source': 'ec16_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#73AF48'
+                            },
+                            'source-layer': 'ec16'
+                        });
+
+                        //afegir capa C15
+                        map.addSource('ec15_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6khn311hxc28mrotlkadpp-2adud'
+                        });
+
+                        map.addLayer({
+                            'id': 'Peix i marisc',
+                            'type': 'circle',
+                            'source': 'ec15_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#FB8072'
+                            },
+                            'source-layer': 'ec15'
+                        });
+
+                        //afegir capa C14
+                        map.addSource('ec14_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kgtdb1u9g22qskl35dv0o-8pgjd'
+                        });
+
+                        map.addLayer({
+                            'id': 'Cereals',
+                            'type': 'circle',
+                            'source': 'ec14_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#FFED6F'
+                            },
+                            'source-layer': 'ec14'
+                        });
+
+                        //afegir capa C13
+                        map.addSource('ec13_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kg17m0hx321olwjepukzn-3dalu'
+                        });
+
+                        map.addLayer({
+                            'id': 'Pa i pastissos',
+                            'type': 'circle',
+                            'source': 'ec13_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#5F4690'
+                            },
+                            'source-layer': 'ec13'
+                        });
+
+                        //afegir capa C12
+                        map.addSource('ec12_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6so9pu0tkf2eo47xh635sn-34dnp'
+                        });
+
+                        map.addLayer({
+                            'id': 'Oli i olives',
+                            'type': 'circle',
+                            'source': 'ec12_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#0F8554'
+                            },
+                            'source-layer': 'ec12'
+                        });
+
+                        //afegir capa C1
+                        map.addSource('ec1_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6k5yqp16gt21o34dfes59y-80qj1'
+                        });
+
+                        map.addLayer({
+                            'id': 'Mercat municipal',
+                            'type': 'circle',
+                            'source': 'ec1_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#FA0022'
+                            },
+                            'source-layer': 'ec1'
+                        });
+
+                        //afegir capa C11
+                        map.addSource('ec11_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6keip70w9k27phcpgx3bb6-71e5z'
+                        });
+
+                        map.addLayer({
+                            'id': 'Llegums',
+                            'type': 'circle',
+                            'source': 'ec11_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#6F4070'
+                            },
+                            'source-layer': 'ec11'
+                        });
+
+                        //afegir capa C10
+                        map.addSource('ec10_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kds2v0h7128l38j2vxp60-3szw6'
+                        });
+
+                        map.addLayer({
+                            'id': 'Herbes aromàtiques i condiments',
+                            'type': 'circle',
+                            'source': 'ec10_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#EDAD08'
+                            },
+                            'source-layer': 'ec10'
+                        });
+
+                        //afegir capa C9
+                        map.addSource('ec9_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6snenm0k2j20oljc25o6gv-3x8dt'
+                        });
+
+                        map.addLayer({
+                            'id': 'Fruits secs',
+                            'type': 'circle',
+                            'source': 'ec9_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#8BE0A4'
+                            },
+                            'source-layer': 'ec9'
+                        });
+
+                        //afegir capa C8
+                        map.addSource('ec8_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kc2y304mg28to92e1q19f-1q6rv'
+                        });
+
+                        map.addLayer({
+                            'id': 'Fruita',
+                            'type': 'circle',
+                            'source': 'ec8_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#FF4F33'
+                            },
+                            'source-layer': 'ec8'
+                        });
+
+                        //afegir capa C7
+                        map.addSource('ec7_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kasso0we020phcs5ttqm6-4kn64'
+                        });
+
+                        map.addLayer({
+                            'id': 'Formatge i làctics',
+                            'type': 'circle',
+                            'source': 'ec7_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#1D6996'
+                            },
+                            'source-layer': 'ec7'
+                        });
+
+                        //afegir capa C3
+                        map.addSource('ec3_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6k7lz11kds28mge2gd8o17-6punf'
+                        });
+
+                        map.addLayer({
+                            'id': 'Fires',
+                            'type': 'circle',
+                            'source': 'ec3_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#E73F74'
+                            },
+                            'source-layer': 'ec3'
+                        });
+
+                        //afegir capa C6
+                        map.addSource('ec6_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6ka2bs0u7920pdzahw0cn7-2ypo5'
+                        });
+
+                        map.addLayer({
+                            'id': 'Carn i embotits',
+                            'type': 'circle',
+                            'source': 'ec6_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#FE88B1'
+                            },
+                            'source-layer': 'ec6'
+                        });
+
+                        //afegir capa C2
+                        map.addSource('ec2_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6k6tve0u6720pd1wwpl4sp-6d836'
+                        });
+
+                        map.addLayer({
+                            'id': 'Comerç al detall',
+                            'type': 'circle',
+                            'source': 'ec2_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#A5AA99'
+                            },
+                            'source-layer': 'ec2'
+                        });
+
+                        //afegir capa C18
+                        map.addSource('ec18_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6kjttt0ron2eo43y9o8io8-0flka'
+                        });
+
+                        map.addLayer({
+                            'id': 'Café, te, xocolata i sucre',
+                            'type': 'circle',
+                            'source': 'ec18_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#933622'
+                            },
+                            'source-layer': 'ec18'
+                        });
+
+                        //afegir capa C5
+                        map.addSource('ec5_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6slq1v06ov21tokwpuaut4-3s7k6'
+                        });
+
+                        map.addLayer({
+                            'id': 'Begudes (vi, cava, licors, cerveses)',
+                            'type': 'circle',
+                            'source': 'ec5_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#5D69B1'
+                            },
+                            'source-layer': 'ec5'
+                        });
+
+                        //afegir capa C4
+                        map.addSource('ec4_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl6k8g9506ev20poc6wln0hm-5h65s'
+                        });
+
+                        map.addLayer({
+                            'id': 'Aviram i ous',
+                            'type': 'circle',
+                            'source': 'ec4_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#38A6A5'
+                            },
+                            'source-layer': 'ec4'
+                        });
+
+
+                });
+                //final afegir capes
+
+                //afegir popup
+                map.on('click', function(e) {
+                                  var features = map.queryRenderedFeatures(e.point, {
+                                      layers: ['Vinya', 'Hortalisses', 'Peix i marisc', 'Cereals', 'Pa i pastissos', 'Oli i olives', 'Mercat municipal', 'Llegums', 'Herbes aromàtiques i condiments', 
+                                      'Fruits secs', 'Fruita', 'Formatge i làctics', 'Fires', 'Carn i embotits', 'Comerç al detall', 'Café, te, xocolata i sucre', 'Begudes (vi, cava, licors, cerveses)', 'Aviram i ous']
+                                  });
+
+                                  if (!features.length) {
+                                      return;
+                                  }
+
+                                  var feature = features[0];
+
+                                  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+                                      .setLngLat(feature.geometry.coordinates)
+                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
+                                      .setLngLat(feature.geometry.coordinates)
+                                      .addTo(map);
+                            });
+
+                          map.on('mouseenter', 'Vinya', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Vinya', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Hortalisses', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Hortalisses', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Peix i marisc', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Peix i marisc', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Cereals', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Cereals', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Pa i pastissos', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Pa i pastissos', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Oli i olives', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Oli i olives', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Mercat municipal', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Mercat municipal', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Llegums', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Llegums', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Herbes aromàtiques i condiments', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Herbes aromàtiques i condiments', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Fruits secs', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Fruits secs', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Fruita', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Fruita', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Formatge i làctics', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Formatge i làctics', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Fires', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Fires', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Carn i embotits', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Carn i embotits', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Comerç al detall', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Comerç al detall', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Café, te, xocolata i sucre', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Café, te, xocolata i sucre', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Begudes (vi, cava, licors, cerveses)', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Begudes (vi, cava, licors, cerveses)', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Aviram i ous', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Aviram i ous', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+                          //final afegir popup
+
+                //afegir selector de capes
+                var toggleableLayerIds = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
+                                          'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries']; 
+                                          
+                
+                // **set up the corresponding toggle button for each layer
+                for (var i = 0; i < toggleableLayerIds.length; i++) {
+                var id = toggleableLayerIds[i];
+                  
+                var link = document.createElement('a');
+                link.href = '#';
+                link.className = 'active';
+                link.textContent = id;
+                  
+                link.onclick = function (e) {
+                var clickedLayer = this.textContent;
+                e.preventDefault();
+                e.stopPropagation();
+                  
+                var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+                  
+                // **toggle layer visibility by changing the layout object's visibility property
+                if (visibility === 'visible') {
+                map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+                this.className = '';
+                } else {
+                this.className = 'active';
+                map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+                }
+                };
+                  
+                var layers = document.getElementById('menu');
+                layers.appendChild(link);
+                }
+                //final selector de capes
+
 
           }
         </script>
@@ -70,7 +640,30 @@
       
         <!--MAPA-->
         <main>
+          <nav id="menu"></nav>
           <div id="map_canvas"></div>
+          <div id="map_legend" class="legend">
+            <div><span style="background-color: #38A6A5"></span>Aviram i ous</div>
+            <div><span style="background-color: #5D69B1"></span>Begudes (vi, cava, licors, cerveses)</div>
+            <div><span style="background-color: #933622"></span>Café, te, xocolata i sucre</div>
+            <div><span style="background-color: #FE88B1"></span>Carn i embotits</div>
+            <div><span style="background-color: #FFED6F"></span>Cereals</div>
+            <div><span style="background-color: #A5AA99"></span>Comerç al detall</div>
+            <div><span style="background-color: #E73F74"></span>Fires</div>
+            <div><span style="background-color: #1D6996"></span>Formatges i làctics</div>
+            <div><span style="background-color: #FF4F33"></span>Fruita</div>
+            <div><span style="background-color: #8BE0A4"></span>Fruits secs</div>
+            <div><span style="background-color: #EDAD08"></span>Herbes aromàtiques i condiments</div>
+            <div><span style="background-color: #73AF48"></span>Hortalisses</div>
+            <div><span style="background-color: #6F4070"></span>Llegums</div>
+            <div><span style="background-color: #FF0022"></span>Mercat municipal</div>
+            <div><span style="background-color: #0F8554"></span>Oli i olives</div>
+            <div><span style="background-color: #5F4690"></span>Pa i pastissos</div>
+            <div><span style="background-color: #FB8072"></span>Peix i marisc</div>
+            <div><span style="background-color: #94346E"></span>Vinya</div>
+            <div><span style="background-color: #A3D94C"></span>Cultius</div>
+            <div><span style="background-color: #36A1A1"></span>Explotacions agràries</div>
+          </div>
         </main>
 
       <!--PEU-->
