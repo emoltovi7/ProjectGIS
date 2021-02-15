@@ -34,27 +34,27 @@
                 map.on('load', function () {
 
                                   //afegir capa productes ecos
-                                  map.addSource('ecos_source', {
+                                  map.addSource('xal_ecos_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl5jbfq30la720rr5yve0wcm-4b9in'
+                                      url: 'mapbox://emoltovi7.ckl6goyn80g8n28pgxngfxrxb-0pnr5'
                                   });
 
                                   map.addLayer({
                                       'id': 'Productes ecològics',
                                       'type': 'circle',
-                                      'source': 'ecos_source',
+                                      'source': 'xal_ecos_source',
                                       'layout': {'visibility': 'visible'},
                                       'paint':{
                                           'circle-radius': 4,
                                           'circle-color':'#FF9200'
                                       },
-                                      'source-layer': 'ecos'
+                                      'source-layer': 'xal_ecos'
                                   });
 
                                   //afegir capa productes locals
                                   map.addSource('xal_locals_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl5jpn8q1f5o29nh3mipv4kw-5ftfl'
+                                      url: 'mapbox://emoltovi7.ckl6gnx531tky29qs3otc2rjc-161a9'
                                   });
 
                                   map.addLayer({
@@ -72,7 +72,7 @@
                                   //afegir capa tots productes
                                   map.addSource('xal_tots_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl5hbvxs1elp22nht9ccx28k-7glqa'
+                                      url: 'mapbox://emoltovi7.ckl6gmlhj187f27mxn3uodohe-5m8rx'
                                   });
 
                                   map.addLayer({
@@ -92,7 +92,7 @@
 
                           map.on('click', function(e) {
                                   var features = map.queryRenderedFeatures(e.point, {
-                                      layers: ['Productes locals'] // replace this with the name of the layer
+                                      layers: ['Productes locals', 'Productes ecològics', 'Tots els productes']
                                   });
 
                                   if (!features.length) {
@@ -103,7 +103,7 @@
 
                                   var popup = new mapboxgl.Popup({ offset: [0, -15] })
                                       .setLngLat(feature.geometry.coordinates)
-                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ' ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.field_9 + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
+                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
                                       .setLngLat(feature.geometry.coordinates)
                                       .addTo(map);
                             });
@@ -113,6 +113,22 @@
                           });
 
                           map.on('mouseleave', 'Productes locals', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Productes ecològics', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Productes ecològics', function() {
+                            map.getCanvas().style.cursor = '';                    
+                          });
+
+                          map.on('mouseenter', 'Tots els productes', function() {
+                          map.getCanvas().style.cursor = 'pointer';                    
+                          });
+
+                          map.on('mouseleave', 'Tots els productes', function() {
                             map.getCanvas().style.cursor = '';                    
                           });
 
@@ -190,52 +206,6 @@
       
         <!--MAPA-->
         <main>
-
-          <style>
-            #menu {
-            position: absolute;
-            z-index: 1;
-            top: 10px;
-            left: 10px;
-            width: 200px;
-            height: 30px;
-            border: 0px;
-            font-family: 'Open Sans', sans-serif;
-            }
-             
-            #menu a {
-            opacity: 85%;
-            font-size: 13px;
-            color: #404040;
-            display: block;
-            width: 140px;
-            margin: 0;
-            padding: 0;
-            padding: 10px;
-            text-decoration: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-            text-align: center;
-            }
-             
-            #menu a:last-child {
-            border: none;
-            }
-             
-            #menu a:hover {
-            background-color: #f8f8f8;
-            color: #404040;
-            }
-             
-            #menu a.active {
-            background-color: #42BC97;
-            color: #ffffff;
-            }
-             
-            #menu a.active:hover {
-            background: #25A780;
-            }
-          </style>
-
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
         </main>
