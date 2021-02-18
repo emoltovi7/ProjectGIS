@@ -91,6 +91,32 @@ ul#menu_nav
 	color: #42BC97;
 }
 
+/*LINKS MENU*/
+
+body a:link 
+{
+	
+    color: #463C32;
+   	text-decoration: none;
+}
+
+body a:visited 
+{
+	text-decoration: none;
+    color: #463C32;
+}
+
+body a:hover 
+{
+	text-decoration: none;
+    color: #42BC97;
+}
+
+body a:active 
+{
+	text-decoration: none;
+    color: black;
+}
 
 
 
@@ -168,154 +194,20 @@ background: #25A780;
 	position: absolute;
 	right: 30px;
 	z-index: 1;
-	}
+}
 	 
-	.legend h4 {
+.legend h4 {
 	margin: 0 0 10px;
-	}
-	 
-	.legend div span {
+}
+	
+.legend div span {
 	border-radius: 50%;
 	display: inline-block;
 	height: 10px;
 	margin-right: 5px;
 	width: 10px;
-	}
+}
+
 /*fi llegenda*/
 
-/*--------------------------------------------------PEU---------------------------------------------------*/
-/*PEU DE PAGINA*/
-
-footer
-{
-	min-width: 885px;
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
-	background-color: white;
-	height: 0%;
-	font-size: 18px;
-}
-
-/*IDIOMES*/
-div#idiomas
-{
-	min-width: 250px;
-	float: left;
-	margin-bottom: 10px;
-}
-
-ul#lista_idiomas  
-{
-	margin: 10px;
-	padding: 0;
-}
-
-ul#lista_idiomas  li
-{
-	float: left;
-	list-style-type: none;
-	padding-right: 10px;
-}
-
-#lista_idiomas li
-{
-	border-right: 1px solid darkgrey;
-	margin-right: 13px;
-}
-
-#lista_idiomas li:last-child
-{
-	border-right: none;
-}
-
-/*LINK EXTERNS*/
-
-/*IDIOMES*/
-div#links_externos
-{
-	min-width: 450px;
-	float: right;
-	margin-bottom: 10px;
-}
-
-ul#links_externos  
-{
-	margin: 10px;
-	padding: 0;
-}
-
-ul#links_externos  li
-{
-	float: left;
-	list-style-type: none;
-	padding-right: 10px;
-}
-
-#links_externos li
-{
-	border-right: 1px solid darkgrey;
-	margin-right: 13px;
-
-}
-
-#links_externos li:last-child
-{
-	border-right: none;
-}
-
-/*LINKS idiomes & menu*/
-
-body a:link 
-{
-	
-    color: #463C32;
-   	text-decoration: none;
-}
-
-body a:visited 
-{
-	text-decoration: none;
-    color: #463C32;
-}
-
-body a:hover 
-{
-	text-decoration: none;
-    color: #42BC97;
-}
-
-body a:active 
-{
-	text-decoration: none;
-    color: black;
-}
-
-
-
-/*LINKS PEU PAGINA*/
-
-footer a:link 
-{
-    color: darkgrey;
-   	text-decoration: none;
-}
-
-footer a:visited 
-{
-	text-decoration: none;
-    color: darkgrey;
-}
-
-footer a:hover 
-{
-	text-decoration: none;
-    color: #42BC97;
-}
-
-footer a:active 
-{
-	text-decoration: none;
-    color: black;
-}
 

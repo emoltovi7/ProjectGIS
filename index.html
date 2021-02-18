@@ -21,7 +21,15 @@
           function init() {
               mapboxgl.accessToken =
                   'pk.eyJ1IjoiZW1vbHRvdmk3IiwiYSI6ImNrNWNwMTB4NTA5djYzbnFmczVtZWN5bGQifQ.4TZHCIF2dT6LtuzwqD-KrA';
-              var map = new mapboxgl.Map({
+              
+                  /*afegir filtre capes*/
+                  //var IDproductes = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
+                                          //'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
+                  //var filterInput = document.getElementById('filter-input');
+                  //var layerID = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
+                                          //'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
+
+                  var map = new mapboxgl.Map({
                   container: 'map_canvas',
                   style: 'mapbox://styles/emoltovi7/ckkvftb5w42c817nzf9w21pqa',
                   center: [2.058356166296968, 41.39816698110466],
@@ -30,6 +38,7 @@
               });
               /*geocoder*/
               map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken, mapboxgl:mapboxgl}));
+              /*zoom control*/
               map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'top-right');
 
 
@@ -373,7 +382,7 @@
                             'layout': {'visibility': 'visible'},
                             'paint':{
                                 'circle-radius': 4,
-                                'circle-color':'#5D69B1'
+                                'circle-color':'#38A6A5'
                             },
                             'source-layer': 'lc5'
                         });
@@ -391,7 +400,7 @@
                             'layout': {'visibility': 'visible'},
                             'paint':{
                                 'circle-radius': 4,
-                                'circle-color':'#38A6A5'
+                                'circle-color':'#5D69B1'
                             },
                             'source-layer': 'lc4'
                         });
@@ -601,6 +610,23 @@
                 }
                 //final selector de capes
 
+                
+                //afegir filtre capes
+                /*filterInput.addEventListener('keyup', function (e) {
+                    // If the input value matches a layerID set
+                    // it's visibility to 'visible' or else hide it.
+                    var value = e.target.value.trim().toLowerCase();
+                    IDproductes.forEach(function (IDproductes) {
+                      map.setLayoutProperty(
+                        IDproductes,
+                        'visibility',
+                        IDproductes.indexOf(value) > -1 ? 'visible' : 'none'
+                        );
+                      });
+                  });*/
+                  //final afegir filtre capes
+
+
 
           }
         </script>
@@ -620,10 +646,10 @@
             <nav>
 							<ul id="menu_nav">
                 <li>
-									<a href="locals.html">Productes locals</a>
+									<a href="locals.html" title="Dades provinents del Segell de proximitat de la Generalitat i de la Gastroteca">Productes locals</a>
 								</li>
 								<li>
-									<a href="ecos.html">Productes ecològics</a>
+									<a href="ecos.html" title="Dades provinents del CCPAE">Productes ecològics</a>
 								</li>
 								<li>
 									<a href="tots.html">Tots els productes</a>
@@ -634,18 +660,47 @@
 
           <!--logo amb dreta--> 
           <div id=header_right>
-            <a href="https://agenciaeconomica.amb.cat/economies-locals-emergents"><img id="logo_AMB" src="images/logo_AMB.png" ></a>
+            <a href="https://agenciaeconomica.amb.cat/economies-locals-emergents" title="Agència de Desenvolupament Econòmic de l'Àrea Metropolitana de Barcelona"><img id="logo_AMB" src="images/logo_AMB.png" ></a>
           </div>
           
         </header>
       
         <!--MAPA-->
         <main>
+          <!--<style>
+            .filter-ctrl {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1;
+            }
+             
+            .filter-ctrl input[type='text'] {
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            width: 100%;
+            border: 0;
+            background-color: #fff;
+            margin: 0;
+            color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+            width: 180px;
+            }
+            </style>-->
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
+         <!--<div class="filter-ctrl">
+            <input
+            id="filter-input"
+            type="text"
+            name="filter"
+            placeholder="Filtra per producte"
+            />
+            </div>-->
           <div id="map_legend" class="legend">
-            <div><span style="background-color: #38A6A5"></span>Aviram i ous</div>
-            <div><span style="background-color: #5D69B1"></span>Begudes (vi, cava, licors, cerveses)</div>
+            <div><span style="background-color: #5D69B1"></span>Aviram i ous</div>
+            <div><span style="background-color: #38A6A5"></span>Begudes (vi, cava, licors, cerveses)</div>
             <div><span style="background-color: #933622"></span>Café, te, xocolata i sucre</div>
             <div><span style="background-color: #FE88B1"></span>Carn i embotits</div>
             <div><span style="background-color: #FFED6F"></span>Cereals</div>
@@ -662,43 +717,10 @@
             <div><span style="background-color: #5F4690"></span>Pa i pastissos</div>
             <div><span style="background-color: #FB8072"></span>Peix i marisc</div>
             <div><span style="background-color: #94346E"></span>Vinya</div>
-            <div><span style="background-color: #A3D94C"></span>Cultius</div>
-            <div><span style="background-color: #36A1A1"></span>Explotacions agràries</div>
+            <div><span style="background-color: #A3D94C; border-radius: 0%; height:13px; width:13px;"></span>Cultius</div>
+            <div><span style="background-color: #36A1A1; border-radius: 0%; height:13px; width:13px;"></span>Explotacions agràries</div>
           </div>
         </main>
 
-      <!--PEU-->
-        <footer>
-          <!--selector idioma-->
-          <div id="idiomas">  
-
-            <ul id="lista_idiomas">
-
-              <li><a href="#">Català</a></li>
-              <li><a href="#">Castellano</a></li>
-              <li><a href="#">English</a></li>
-
-            </ul>
-
-          </div>
-
-          <div id="links_externos">
-            <ul id="links_externos">
-
-              <li>
-                <a href="#">Política de privacitat</a>
-              </li>
-              <li>
-                <a href="#">Avís legal</a>
-              </li>
-              <li>
-                <a href="#">L'àrea metropolitana</a>
-
-              </li>
-
-            </ul>
-          </div>
-        </footer>
-          
     </body>
 </html>

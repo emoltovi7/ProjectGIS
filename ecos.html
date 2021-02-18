@@ -360,40 +360,40 @@
                             'source-layer': 'ec18'
                         });
 
-                        //afegir capa C5
-                        map.addSource('ec5_source', {
+                        //afegir capa L5
+                        map.addSource('lc5_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6slq1v06ov21tokwpuaut4-3s7k6'
+                            url: 'mapbox://emoltovi7.ckl71bu3p0zue21phv1xwl9g4-1do83'
                         });
 
                         map.addLayer({
                             'id': 'Begudes (vi, cava, licors, cerveses)',
                             'type': 'circle',
-                            'source': 'ec5_source',
-                            'layout': {'visibility': 'visible'},
-                            'paint':{
-                                'circle-radius': 4,
-                                'circle-color':'#5D69B1'
-                            },
-                            'source-layer': 'ec5'
-                        });
-
-                        //afegir capa C4
-                        map.addSource('ec4_source', {
-                            type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6k8g9506ev20poc6wln0hm-5h65s'
-                        });
-
-                        map.addLayer({
-                            'id': 'Aviram i ous',
-                            'type': 'circle',
-                            'source': 'ec4_source',
+                            'source': 'lc5_source',
                             'layout': {'visibility': 'visible'},
                             'paint':{
                                 'circle-radius': 4,
                                 'circle-color':'#38A6A5'
                             },
-                            'source-layer': 'ec4'
+                            'source-layer': 'lc5'
+                        });
+
+                        //afegir capa L4
+                        map.addSource('lc4_source', {
+                            type: 'vector',
+                            url: 'mapbox://emoltovi7.ckl71bgpt0amr20mbi7n8bd62-8hogh'
+                        });
+
+                        map.addLayer({
+                            'id': 'Aviram i ous',
+                            'type': 'circle',
+                            'source': 'lc4_source',
+                            'layout': {'visibility': 'visible'},
+                            'paint':{
+                                'circle-radius': 4,
+                                'circle-color':'#5D69B1'
+                            },
+                            'source-layer': 'lc4'
                         });
 
 
@@ -620,10 +620,10 @@
             <nav>
 							<ul id="menu_nav">
                 <li>
-									<a href="locals.html">Productes locals</a>
+									<a href="locals.html" title="Dades provinents del Segell de proximitat de la Generalitat i de la Gastroteca">Productes locals</a>
 								</li>
 								<li>
-									<a href="ecos.html">Productes ecològics</a>
+									<a id="active_web" href="ecos.html" title="Dades provinents del CCPAE">Productes ecològics</a>
 								</li>
 								<li>
 									<a href="tots.html">Tots els productes</a>
@@ -634,7 +634,7 @@
 
           <!--logo amb dreta--> 
           <div id=header_right>
-            <img id="logo_AMB" src="images/logo_AMB.png" >
+            <a href="https://agenciaeconomica.amb.cat/economies-locals-emergents" title="Agència de Desenvolupament Econòmic de l'Àrea Metropolitana de Barcelona"><img id="logo_AMB" src="images/logo_AMB.png" ></a>
           </div>
           
         </header>
@@ -644,8 +644,8 @@
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
           <div id="map_legend" class="legend">
-            <div><span style="background-color: #38A6A5"></span>Aviram i ous</div>
-            <div><span style="background-color: #5D69B1"></span>Begudes (vi, cava, licors, cerveses)</div>
+            <div><span style="background-color: #5D69B1"></span>Aviram i ous</div>
+            <div><span style="background-color: #38A6A5"></span>Begudes (vi, cava, licors, cerveses)</div>
             <div><span style="background-color: #933622"></span>Café, te, xocolata i sucre</div>
             <div><span style="background-color: #FE88B1"></span>Carn i embotits</div>
             <div><span style="background-color: #FFED6F"></span>Cereals</div>
@@ -662,43 +662,10 @@
             <div><span style="background-color: #5F4690"></span>Pa i pastissos</div>
             <div><span style="background-color: #FB8072"></span>Peix i marisc</div>
             <div><span style="background-color: #94346E"></span>Vinya</div>
-            <div><span style="background-color: #A3D94C"></span>Cultius</div>
-            <div><span style="background-color: #36A1A1"></span>Explotacions agràries</div>
+            <div><span style="background-color: #A3D94C; border-radius: 0%; height:13px; width:13px;"></span>Cultius</div>
+            <div><span style="background-color: #36A1A1; border-radius: 0%; height:13px; width:13px;"></span>Explotacions agràries</div>
           </div>
         </main>
-
-      <!--PEU-->
-        <footer>
-          <!--selector idioma-->
-          <div id="idiomas">  
-
-            <ul id="lista_idiomas">
-
-              <li><a href="#">Català</a></li>
-              <li><a href="#">Castellano</a></li>
-              <li><a href="#">English</a></li>
-
-            </ul>
-
-          </div>
-
-          <div id="links_externos">
-            <ul id="links_externos">
-
-              <li>
-                <a href="#">Política de privacitat</a>
-              </li>
-              <li>
-                <a href="#">Avís legal</a>
-              </li>
-              <li>
-                <a href="#">L'àrea metropolitana</a>
-
-              </li>
-
-            </ul>
-          </div>
-        </footer>
 
     </body>
 </html>
