@@ -23,12 +23,11 @@
                   'pk.eyJ1IjoiZW1vbHRvdmk3IiwiYSI6ImNrNWNwMTB4NTA5djYzbnFmczVtZWN5bGQifQ.4TZHCIF2dT6LtuzwqD-KrA';
               
                   /*afegir filtre capes*/
-                  //var IDproductes = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
-                                          //'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
-                  //var filterInput = document.getElementById('filter-input');
-                  //var layerID = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
-                                          //'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
-
+                  var IDproductes = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
+                                          'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
+                  var filterInput = document.getElementById('filter-input');
+                 
+                  
                   var map = new mapboxgl.Map({
                   container: 'map_canvas',
                   style: 'mapbox://styles/emoltovi7/ckkvftb5w42c817nzf9w21pqa',
@@ -37,7 +36,7 @@
                   attributionControl: false
               });
               /*geocoder*/
-              map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken, mapboxgl:mapboxgl}));
+              map.addControl(new MapboxGeocoder({accessToken: mapboxgl.accessToken, language: 'ca-CA', mapboxgl:mapboxgl}));
               /*zoom control*/
               map.addControl(new mapboxgl.NavigationControl({showCompass:false}), 'top-right');
 
@@ -424,7 +423,7 @@
 
                                   var popup = new mapboxgl.Popup({ offset: [0, -15] })
                                       .setLngLat(feature.geometry.coordinates)
-                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
+                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p><p>Productes: ' + feature.properties.Productes_1 + '</p>')
                                       .setLngLat(feature.geometry.coordinates)
                                       .addTo(map);
                             });
@@ -612,18 +611,18 @@
 
                 
                 //afegir filtre capes
-                /*filterInput.addEventListener('keyup', function (e) {
+                filterInput.addEventListener('keyup', function (e) {
                     // If the input value matches a layerID set
                     // it's visibility to 'visible' or else hide it.
                     var value = e.target.value.trim().toLowerCase();
-                    IDproductes.forEach(function (IDproductes) {
+                    IDproductes.forEach(function (IDproducte) {
                       map.setLayoutProperty(
-                        IDproductes,
+                        IDproducte,
                         'visibility',
-                        IDproductes.indexOf(value) > -1 ? 'visible' : 'none'
+                        IDproducte.toLowerCase().indexOf(value) > -1 ? 'visible' : 'none'
                         );
                       });
-                  });*/
+                  });
                   //final afegir filtre capes
 
 
@@ -667,37 +666,16 @@
       
         <!--MAPA-->
         <main>
-          <!--<style>
-            .filter-ctrl {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1;
-            }
-             
-            .filter-ctrl input[type='text'] {
-            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            width: 100%;
-            border: 0;
-            background-color: #fff;
-            margin: 0;
-            color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-            border-radius: 3px;
-            width: 180px;
-            }
-            </style>-->
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
-         <!--<div class="filter-ctrl">
-            <input
-            id="filter-input"
-            type="text"
-            name="filter"
-            placeholder="Filtra per producte"
-            />
-            </div>-->
+            <div class="filter-ctrl">
+                <input
+                id="filter-input"
+                type="text"
+                name="filter"
+                placeholder="Cerca per producte"
+                />
+            </div>
           <div id="map_legend" class="legend">
             <div><span style="background-color: #5D69B1"></span>Aviram i ous</div>
             <div><span style="background-color: #38A6A5"></span>Begudes (vi, cava, licors, cerveses)</div>

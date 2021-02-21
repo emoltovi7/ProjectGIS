@@ -21,6 +21,13 @@
           function init() {
               mapboxgl.accessToken =
                   'pk.eyJ1IjoiZW1vbHRvdmk3IiwiYSI6ImNrNWNwMTB4NTA5djYzbnFmczVtZWN5bGQifQ.4TZHCIF2dT6LtuzwqD-KrA';
+
+                /*afegir filtre capes*/
+                var IDproductes = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Formatge i làctics', 
+                                          'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
+                var filterInput = document.getElementById('filter-input');
+
+
               var map = new mapboxgl.Map({
                   container: 'map_canvas',
                   style: 'mapbox://styles/emoltovi7/ckkvftb5w42c817nzf9w21pqa',
@@ -75,7 +82,7 @@
                         //afegir capa C17
                         map.addSource('ec17_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6sp9co0tg728o43xiv7n6y-9l1at'
+                            url: 'mapbox://emoltovi7.cklfn2e4u1c3y20s2xj5rdoi3-7c0h1'
                         });
 
                         map.addLayer({
@@ -93,7 +100,7 @@
                         //afegir capa C16
                         map.addSource('ec16_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kidss0i6e25jcjm1oqf6e-900sk'
+                            url: 'mapbox://emoltovi7.cklfn26li1eff21o1stcq6uxe-51rnk'
                         });
 
                         map.addLayer({
@@ -111,7 +118,7 @@
                         //afegir capa C15
                         map.addSource('ec15_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6khn311hxc28mrotlkadpp-2adud'
+                            url: 'mapbox://emoltovi7.cklfn1xvk0ayx28lmxnxeedue-9ejd9'
                         });
 
                         map.addLayer({
@@ -129,7 +136,7 @@
                         //afegir capa C14
                         map.addSource('ec14_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kgtdb1u9g22qskl35dv0o-8pgjd'
+                            url: 'mapbox://emoltovi7.cklfn1pqe2msx21l3m0urjoho-8y9j3'
                         });
 
                         map.addLayer({
@@ -147,7 +154,7 @@
                         //afegir capa C13
                         map.addSource('ec13_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kg17m0hx321olwjepukzn-3dalu'
+                            url: 'mapbox://emoltovi7.cklfn1ict09z622p5pgzf51gg-3k8cu'
                         });
 
                         map.addLayer({
@@ -165,7 +172,7 @@
                         //afegir capa C12
                         map.addSource('ec12_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6so9pu0tkf2eo47xh635sn-34dnp'
+                            url: 'mapbox://emoltovi7.cklfn1amr09xo28p5sgct5tiz-3mmnz'
                         });
 
                         map.addLayer({
@@ -180,28 +187,10 @@
                             'source-layer': 'ec12'
                         });
 
-                        //afegir capa C1
-                        map.addSource('ec1_source', {
-                            type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6k5yqp16gt21o34dfes59y-80qj1'
-                        });
-
-                        map.addLayer({
-                            'id': 'Mercat municipal',
-                            'type': 'circle',
-                            'source': 'ec1_source',
-                            'layout': {'visibility': 'visible'},
-                            'paint':{
-                                'circle-radius': 4,
-                                'circle-color':'#FA0022'
-                            },
-                            'source-layer': 'ec1'
-                        });
-
                         //afegir capa C11
                         map.addSource('ec11_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6keip70w9k27phcpgx3bb6-71e5z'
+                            url: 'mapbox://emoltovi7.cklfn13641ntf21n3x7dpcb1i-9qr5s'
                         });
 
                         map.addLayer({
@@ -219,7 +208,7 @@
                         //afegir capa C10
                         map.addSource('ec10_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kds2v0h7128l38j2vxp60-3szw6'
+                            url: 'mapbox://emoltovi7.cklfn0uou015h21mf7sry754g-8ywqi'
                         });
 
                         map.addLayer({
@@ -237,7 +226,7 @@
                         //afegir capa C9
                         map.addSource('ec9_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6snenm0k2j20oljc25o6gv-3x8dt'
+                            url: 'mapbox://emoltovi7.cklfn0m7r117f21n0wselz4sg-3lfee'
                         });
 
                         map.addLayer({
@@ -255,7 +244,7 @@
                         //afegir capa C8
                         map.addSource('ec8_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kc2y304mg28to92e1q19f-1q6rv'
+                            url: 'mapbox://emoltovi7.cklfn0f2r1q7j27lgwwrcksn4-5sq8l'
                         });
 
                         map.addLayer({
@@ -273,7 +262,7 @@
                         //afegir capa C7
                         map.addSource('ec7_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kasso0we020phcs5ttqm6-4kn64'
+                            url: 'mapbox://emoltovi7.cklfn07va11e728tjxbd2t9gl-1r5io'
                         });
 
                         map.addLayer({
@@ -288,28 +277,10 @@
                             'source-layer': 'ec7'
                         });
 
-                        //afegir capa C3
-                        map.addSource('ec3_source', {
-                            type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6k7lz11kds28mge2gd8o17-6punf'
-                        });
-
-                        map.addLayer({
-                            'id': 'Fires',
-                            'type': 'circle',
-                            'source': 'ec3_source',
-                            'layout': {'visibility': 'visible'},
-                            'paint':{
-                                'circle-radius': 4,
-                                'circle-color':'#E73F74'
-                            },
-                            'source-layer': 'ec3'
-                        });
-
                         //afegir capa C6
                         map.addSource('ec6_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6ka2bs0u7920pdzahw0cn7-2ypo5'
+                            url: 'mapbox://emoltovi7.cklfmzz4w2m0328l3osybyg3k-3znal'
                         });
 
                         map.addLayer({
@@ -327,7 +298,7 @@
                         //afegir capa C2
                         map.addSource('ec2_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6k6tve0u6720pd1wwpl4sp-6d836'
+                            url: 'mapbox://emoltovi7.cklfmzdhb1eel21o1zwghxyhu-4bmz0'
                         });
 
                         map.addLayer({
@@ -345,7 +316,7 @@
                         //afegir capa C18
                         map.addSource('ec18_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl6kjttt0ron2eo43y9o8io8-0flka'
+                            url: 'mapbox://emoltovi7.cklfn2m131c9z21s2a1zeej6i-90jtn'
                         });
 
                         map.addLayer({
@@ -360,40 +331,40 @@
                             'source-layer': 'ec18'
                         });
 
-                        //afegir capa L5
-                        map.addSource('lc5_source', {
+                        //afegir capa C5
+                        map.addSource('ec5_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl71bu3p0zue21phv1xwl9g4-1do83'
+                            url: 'mapbox://emoltovi7.cklfmzshm014327o911dot23s-1uq5j'
                         });
 
                         map.addLayer({
                             'id': 'Begudes (vi, cava, licors, cerveses)',
                             'type': 'circle',
-                            'source': 'lc5_source',
+                            'source': 'ec5_source',
                             'layout': {'visibility': 'visible'},
                             'paint':{
                                 'circle-radius': 4,
                                 'circle-color':'#38A6A5'
                             },
-                            'source-layer': 'lc5'
+                            'source-layer': 'ec5'
                         });
 
-                        //afegir capa L4
-                        map.addSource('lc4_source', {
+                        //afegir capa C4
+                        map.addSource('ec4_source', {
                             type: 'vector',
-                            url: 'mapbox://emoltovi7.ckl71bgpt0amr20mbi7n8bd62-8hogh'
+                            url: 'mapbox://emoltovi7.cklfmzl391zk824qdngeb98sl-6i6ps'
                         });
 
                         map.addLayer({
                             'id': 'Aviram i ous',
                             'type': 'circle',
-                            'source': 'lc4_source',
+                            'source': 'ec4_source',
                             'layout': {'visibility': 'visible'},
                             'paint':{
                                 'circle-radius': 4,
                                 'circle-color':'#5D69B1'
                             },
-                            'source-layer': 'lc4'
+                            'source-layer': 'ec4'
                         });
 
 
@@ -403,8 +374,8 @@
                 //afegir popup
                 map.on('click', function(e) {
                                   var features = map.queryRenderedFeatures(e.point, {
-                                      layers: ['Vinya', 'Hortalisses', 'Peix i marisc', 'Cereals', 'Pa i pastissos', 'Oli i olives', 'Mercat municipal', 'Llegums', 'Herbes aromàtiques i condiments', 
-                                      'Fruits secs', 'Fruita', 'Formatge i làctics', 'Fires', 'Carn i embotits', 'Comerç al detall', 'Café, te, xocolata i sucre', 'Begudes (vi, cava, licors, cerveses)', 'Aviram i ous']
+                                      layers: ['Vinya', 'Hortalisses', 'Peix i marisc', 'Cereals', 'Pa i pastissos', 'Oli i olives', 'Llegums', 'Herbes aromàtiques i condiments', 
+                                      'Fruits secs', 'Fruita', 'Formatge i làctics', 'Carn i embotits', 'Comerç al detall', 'Café, te, xocolata i sucre', 'Begudes (vi, cava, licors, cerveses)', 'Aviram i ous']
                                   });
 
                                   if (!features.length) {
@@ -415,7 +386,7 @@
 
                                   var popup = new mapboxgl.Popup({ offset: [0, -15] })
                                       .setLngLat(feature.geometry.coordinates)
-                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
+                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p><p>Productes: ' + feature.properties.Productes_1 + '</p>')
                                       .setLngLat(feature.geometry.coordinates)
                                       .addTo(map);
                             });
@@ -468,14 +439,6 @@
                             map.getCanvas().style.cursor = '';                    
                           });
 
-                          map.on('mouseenter', 'Mercat municipal', function() {
-                          map.getCanvas().style.cursor = 'pointer';                    
-                          });
-
-                          map.on('mouseleave', 'Mercat municipal', function() {
-                            map.getCanvas().style.cursor = '';                    
-                          });
-
                           map.on('mouseenter', 'Llegums', function() {
                           map.getCanvas().style.cursor = 'pointer';                    
                           });
@@ -513,14 +476,6 @@
                           });
 
                           map.on('mouseleave', 'Formatge i làctics', function() {
-                            map.getCanvas().style.cursor = '';                    
-                          });
-
-                          map.on('mouseenter', 'Fires', function() {
-                          map.getCanvas().style.cursor = 'pointer';                    
-                          });
-
-                          map.on('mouseleave', 'Fires', function() {
                             map.getCanvas().style.cursor = '';                    
                           });
 
@@ -566,8 +521,8 @@
                           //final afegir popup
 
                 //afegir selector de capes
-                var toggleableLayerIds = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
-                                          'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries']; 
+                var toggleableLayerIds = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Formatge i làctics', 
+                                          'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries']; 
                                           
                 
                 // **set up the corresponding toggle button for each layer
@@ -600,6 +555,21 @@
                 layers.appendChild(link);
                 }
                 //final selector de capes
+
+                //afegir filtre capes
+                filterInput.addEventListener('keyup', function (e) {
+                    // If the input value matches a layerID set
+                    // it's visibility to 'visible' or else hide it.
+                    var value = e.target.value.trim().toLowerCase();
+                    IDproductes.forEach(function (IDproducte) {
+                      map.setLayoutProperty(
+                        IDproducte,
+                        'visibility',
+                        IDproducte.toLowerCase().indexOf(value) > -1 ? 'visible' : 'none'
+                        );
+                      });
+                  });
+                  //final afegir filtre capes
 
 
           }
@@ -643,6 +613,14 @@
         <main>
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
+            <div class="filter-ctrl">
+                <input
+                id="filter-input"
+                type="text"
+                name="filter"
+                placeholder="Cerca per producte"
+                />
+            </div>
           <div id="map_legend" class="legend">
             <div><span style="background-color: #5D69B1"></span>Aviram i ous</div>
             <div><span style="background-color: #38A6A5"></span>Begudes (vi, cava, licors, cerveses)</div>
@@ -650,14 +628,12 @@
             <div><span style="background-color: #FE88B1"></span>Carn i embotits</div>
             <div><span style="background-color: #FFED6F"></span>Cereals</div>
             <div><span style="background-color: #A5AA99"></span>Comerç al detall</div>
-            <div><span style="background-color: #E73F74"></span>Fires</div>
             <div><span style="background-color: #1D6996"></span>Formatges i làctics</div>
             <div><span style="background-color: #FF4F33"></span>Fruita</div>
             <div><span style="background-color: #8BE0A4"></span>Fruits secs</div>
             <div><span style="background-color: #EDAD08"></span>Herbes aromàtiques i condiments</div>
             <div><span style="background-color: #73AF48"></span>Hortalisses</div>
             <div><span style="background-color: #6F4070"></span>Llegums</div>
-            <div><span style="background-color: #FF0022"></span>Mercat municipal</div>
             <div><span style="background-color: #0F8554"></span>Oli i olives</div>
             <div><span style="background-color: #5F4690"></span>Pa i pastissos</div>
             <div><span style="background-color: #FB8072"></span>Peix i marisc</div>

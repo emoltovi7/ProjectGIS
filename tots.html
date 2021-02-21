@@ -21,6 +21,13 @@
           function init() {
               mapboxgl.accessToken =
                   'pk.eyJ1IjoiZW1vbHRvdmk3IiwiYSI6ImNrNWNwMTB4NTA5djYzbnFmczVtZWN5bGQifQ.4TZHCIF2dT6LtuzwqD-KrA';
+
+                  /*afegir filtre capes*/
+                  var IDproductes = ['Aviram i ous', 'Begudes (vi, cava, licors, cerveses)', 'Café, te, xocolata i sucre', 'Carn i embotits', 'Cereals', 'Comerç al detall', 'Fires', 'Formatge i làctics', 
+                                          'Fruita', 'Fruits secs', 'Herbes aromàtiques i condiments', 'Hortalisses', 'Llegums', 'Mercat municipal', 'Oli i olives', 'Pa i pastissos', 'Peix i marisc', 'Vinya', 'Cultius', 'Explotacions agràries'];
+                  var filterInput = document.getElementById('filter-input');
+
+
               var map = new mapboxgl.Map({
                   container: 'map_canvas',
                   style: 'mapbox://styles/emoltovi7/ckkvftb5w42c817nzf9w21pqa',
@@ -37,7 +44,7 @@
                                   //afegir capa productes ecos
                                   map.addSource('xal_ecos_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl6sen3y08k321mdlqv2y9x2-54fdd'
+                                      url: 'mapbox://emoltovi7.cklfjkr0p00c228mf8ji4iqa0-1fo6z'
                                   });
 
                                   map.addLayer({
@@ -55,7 +62,7 @@
                                   //afegir capa productes locals
                                   map.addSource('xal_locals_source', {
                                       type: 'vector',
-                                      url: 'mapbox://emoltovi7.ckl6sfo6306mv21tonq73j2fy-2lk2d'
+                                      url: 'mapbox://emoltovi7.cklfjlb0f1o7728nwecylhgw2-6oy41'
                                   });
 
                                   map.addLayer({
@@ -142,7 +149,7 @@
 
                                   var popup = new mapboxgl.Popup({ offset: [0, -15] })
                                       .setLngLat(feature.geometry.coordinates)
-                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p>')
+                                      .setHTML('<h3>' + feature.properties.Nom + '</h3><p>Adreça: ' + feature.properties.Adreça + ', ' + feature.properties.Municipi + ', 0' + feature.properties.CodiPostal + '</p><p>Correu electrònic: ' + feature.properties.Correu + '</p><p>Web: ' + feature.properties.Web + '</p><p>Telèfon: ' + feature.properties.Telèfon + '</p><p>Productes: ' + feature.properties.Productes_1 + '</p>')
                                       .setLngLat(feature.geometry.coordinates)
                                       .addTo(map);
                             });
@@ -207,6 +214,21 @@
                 }
                 //final selector de capes
 
+                //afegir filtre capes
+                filterInput.addEventListener('keyup', function (e) {
+                    // If the input value matches a layerID set
+                    // it's visibility to 'visible' or else hide it.
+                    var value = e.target.value.trim().toLowerCase();
+                    IDproductes.forEach(function (IDproducte) {
+                      map.setLayoutProperty(
+                        IDproducte,
+                        'visibility',
+                        IDproducte.toLowerCase().indexOf(value) > -1 ? 'visible' : 'none'
+                        );
+                      });
+                  });
+                  //final afegir filtre capes
+
 
           }
         </script>
@@ -249,6 +271,14 @@
         <main>
           <nav id="menu"></nav>
           <div id="map_canvas"></div>
+            <div class="filter-ctrl">
+              <input
+              id="filter-input"
+              type="text"
+              name="filter"
+              placeholder="Cerca per producte"
+              />
+            </div>
           <div id="map_legend" class="legend">
             <div><span style="background-color: #00E29E"></span>Productes locals</div>
             <div><span style="background-color: #FF9200"></span>Productes ecològics</div>
